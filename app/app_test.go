@@ -1,13 +1,11 @@
 package app
 
 import (
-	"fmt"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
 func TestWorkTime(t *testing.T) {
-	t.Parallel()
 	testCases := []struct {
 		name     string
 		values   string
@@ -49,10 +47,8 @@ func TestWorkTime(t *testing.T) {
 		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
 			t.Parallel()
-			gotResp := WorkTime(tc.values)
-			assert.Equal(t, tc.expected, gotResp,
-				fmt.Sprintf("Incorrect result. Test name: %s; Expected %s, got %s",
-					tc.name, tc.expected, gotResp))
+			gotResp, gotErr := WorkTime(tc.values)
+			assert.Equal(t, tc.expected, gotResp, gotErr)
 		})
 	}
 }

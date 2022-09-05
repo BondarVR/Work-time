@@ -10,11 +10,11 @@ const (
 	layout2 = "15:04:05"
 )
 
-func WorkTime(s string) string {
+func WorkTime(s string) (string, error) {
 	theTime, err := time.Parse(layout1, s)
 	if err != nil {
 		fmt.Println("Could not parse time:", err)
 	}
 	total := theTime.Format(layout2)
-	return total
+	return total, err
 }
