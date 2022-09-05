@@ -2,10 +2,15 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"main/app"
 )
 
 func main() {
-	timeString := "8:21:15PM"
-	fmt.Printf(app.WorkTime(timeString))
+	timeString := "08:21:15PM"
+	res, err := app.WorkTime(timeString)
+	if err != nil {
+		log.Fatalf("Error: '%v'\n", err)
+	}
+	fmt.Println(res)
 }
